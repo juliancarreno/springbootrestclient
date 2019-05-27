@@ -18,7 +18,7 @@ public class PersonaService {
 	
 	public Iterable<Persona> buscarTodos() {
 		
-		ResponseEntity<List<Persona>> respuesta = plantilla.exchange("http://localhost:8080/webapi/personas",
+		ResponseEntity<List<Persona>> respuesta = plantilla.exchange("http://springbootrestserv2-carreno.apps.us-west-1.online-starter.openshift.com/webapi/personas",
 				HttpMethod.GET, null, new ParameterizedTypeReference<List<Persona>>() {
 				});
 		
@@ -31,11 +31,11 @@ public class PersonaService {
 	public void insertar(Persona persona) {
 		//Realiza una peticon HTTP de tipo POST y enviar a la url un objeto Persona
 		HttpEntity<Persona> peticion = new HttpEntity<>(persona);
-		plantilla.postForObject("http://localhost:8080/webapi/personas", peticion, Persona.class);
+		plantilla.postForObject("http://springbootrestserv2-carreno.apps.us-west-1.online-starter.openshift.com/webapi/personas", peticion, Persona.class);
 	}
 	
 	public void borrar(Persona persona) {
 		
-		plantilla.delete("http://localhost:8080/webapi/personas/"+ persona.getNombre());
+		plantilla.delete("http://springbootrestserv2-carreno.apps.us-west-1.online-starter.openshift.com/webapi/personas/"+ persona.getNombre());
 	}			
 }
